@@ -29,3 +29,5 @@ CoinGecko, Binance fixtures (`COINS_USE_FIXTURE`), Alchemy, and WalletConnect ar
 ```bash
 pnpm qa
 ```
+
+CI matches Basilic starter quality gates (no generator, Release Please, Doku, or mobile). Every PR: Lint (`knip`, types, OpenAPI), Security, conventional PR title. Path-filtered: API E2E, web E2E, package unit tests. DeepSec when `AI_GATEWAY_API_KEY` is set and the diff is within the file cap.
