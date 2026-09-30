@@ -13,18 +13,31 @@ permissions:
 jobs:
   analyze:
     name: Analyze diff
-    if: >
-      github.event.pull_request.head.repo.full_name == github.repository && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association) && secrets.AI_GATEWAY_API_KEY != ''
+    if: github.event.pull_request.head.repo.full_name == github.repository && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association)
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Gate on AI Gateway
+        id: gate
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+        run: |
+          if [ -z "$AI_GATEWAY_API_KEY" ]; then
+            echo "AI_GATEWAY_API_KEY is unset; skipping DeepSec."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout code
+        if: steps.gate.outputs.run == 'true'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Restore trusted DeepSec workspace
+        if: steps.gate.outputs.run == 'true'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           GIT_TERMINAL_PROMPT: "0"
@@ -35,25 +48,30 @@ jobs:
           fi
 
       - name: List PR files
+        if: steps.gate.outputs.run == 'true'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           GIT_TERMINAL_PROMPT: "0"
         run: git diff --name-only --diff-filter=AMRC "${BASE_SHA}...HEAD" | tee "${{ github.workspace }}/deepsec-files.txt"
 
       - name: Setup Node.js
+        if: steps.gate.outputs.run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
 
       - name: Setup pnpm
+        if: steps.gate.outputs.run == 'true'
         uses: pnpm/action-setup@v4
 
       - name: Get pnpm store directory
+        if: steps.gate.outputs.run == 'true'
         working-directory: .deepsec
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
 
       - name: Setup pnpm cache
+        if: steps.gate.outputs.run == 'true'
         uses: actions/cache@v4
         with:
           path: ${{ env.STORE_PATH }}
@@ -62,10 +80,12 @@ jobs:
             ${{ runner.os }}-deepsec-pnpm-
 
       - name: Install DeepSec
+        if: steps.gate.outputs.run == 'true'
         working-directory: .deepsec
         run: pnpm install --frozen-lockfile
 
       - name: Configure DeepSec credentials
+        if: steps.gate.outputs.run == 'true'
         working-directory: .deepsec
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
@@ -75,6 +95,7 @@ jobs:
           chmod 600 .env.local
 
       - name: Review PR diff
+        if: steps.gate.outputs.run == 'true'
         id: deepsec
         working-directory: .deepsec
         env:
@@ -93,7 +114,7 @@ jobs:
             2>&1 | tee "${{ github.workspace }}/deepsec.log"
 
       - name: Upload DeepSec log
-        if: failure()
+        if: failure() && steps.gate.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: deepsec-log
@@ -101,7 +122,7 @@ jobs:
           retention-days: 1
 
       - name: Upload findings comment
-        if: always() && hashFiles('comment.md') != ''
+        if: always() && steps.gate.outputs.run == 'true' && hashFiles('comment.md') != ''
         uses: actions/upload-artifact@v4
         with:
           name: deepsec-comment
