@@ -37,12 +37,11 @@ For comprehensive guides, see:
 
 ## Setup
 
-### `setup-skills.mjs`
-
-Reads [`skills-lock-manifest.mjs`](skills-lock-manifest.mjs), runs `pnpm dlx skills@latest add <source> --skill <name> … -y --agent cursor` per catalog, and removes `.claude/` and `.cursor/skills/` if present. The skills CLI updates [`skills-lock.json`](../skills-lock.json). Used by `pnpm setup` and CI `setup-pnpm`.
+`pnpm skills:install` restores from [`skills-lock.json`](../skills-lock.json) (`skills experimental_install`). `pnpm skills:update` refreshes hashes (`skills update -p -y`). Used by `pnpm setup` and CI `setup-pnpm`.
 
 ```bash
-pnpm setup:skills
+pnpm skills:install
+pnpm skills:update
 ```
 
 ## Dependencies
