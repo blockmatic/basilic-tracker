@@ -122,10 +122,10 @@
       "computedHash": "f615de216e085a84e31593ad0fa9062232adc40cd87b7c7ab2b8e49abf6500be"
     },
     "technical-writing": {
-      "source": "vercel/eve",
+      "source": "blockmatic/basilic-skills",
       "sourceType": "github",
-      "skillPath": ".agents/skills/technical-writing/SKILL.md",
-      "computedHash": "99be8fec19ea801cc708abea5d3a1ffa1fecc76c52cff90c1dfc45e39271a092"
+      "skillPath": "skills/technical-writing/SKILL.md",
+      "computedHash": "2ee8ab310d1fdc48e112429d45fc7ac9d8df18fbbc2cc93fce66568a753c8ee0"
     },
     "typesafe-ai": {
       "source": "typesafe-ai/skills",

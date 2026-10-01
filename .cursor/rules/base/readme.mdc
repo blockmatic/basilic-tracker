@@ -5,9 +5,9 @@ alwaysApply: false
 ---
 
 - Simple, succinct, technical, factual; active voice
-- Root README owns the Basilic product story; other READMEs do not repeat it
-- Capability names match `apps/docu` architecture overview
-- Lean with links to the docs site; no duplication of MDX
+- Root README owns the Coin Tracker product story; other READMEs do not repeat it
+- Capability names match `ARCHITECTURE.md`
+- Lean with links to https://basilic-docs.vercel.app; no duplication of root product markdown
 - Follow `.agents/skills/technical-writing/` when rewriting public READMEs
 - Structure:
  - Root: discover → understand → try → explore (not a script encyclopedia)
