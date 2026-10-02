@@ -308,7 +308,7 @@ export function DataTable({
       </div>
 
       <div className="hidden w-full min-w-0 overflow-hidden xl:block [&_[data-slot=table-container]]:overflow-hidden">
-        <Table className="w-full table-fixed" fluid>
+        <Table className="w-full table-fixed">
           <TableHeader>
             <TableRow>
               {showWatch ? (

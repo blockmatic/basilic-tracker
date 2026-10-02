@@ -115,7 +115,7 @@ See [Authentication Architecture](../docu/content/docs/architecture/authenticati
 
 ## Testing
 
-Playwright E2E (`e2e/**/*.spec.ts`) plus compose Vitest beside `lib/genui`. See [E2E Testing](../docu/content/docs/testing/e2e-testing.mdx).
+Playwright E2E (`e2e/**/*.spec.ts`) plus compose Vitest beside `lib/genui`. The board catalog is `lib/genui/catalog.ts`; the shared command GenUI catalog is `lib/genui/command-catalog` with renderers in `components/genui/command-registry`. See [E2E Testing](https://basilic-docs.vercel.app/docs/testing/e2e-testing).
 
 ## Related Documentation
 
