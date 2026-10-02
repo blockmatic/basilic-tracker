@@ -120,7 +120,7 @@ Cursor attaches these by glob. Other harnesses should read the matching file whe
 
 Public one-liner: **Coin Tracker — portfolio, markets, and on-chain data on Basilic.** Do not use swissknife or Vercel-identity copy. Agents participate through the product API, eve (command and chat), CLI, generated clients, and Generative UI. Canonical capability names live in `ARCHITECTURE.md` and on https://basilic-docs.vercel.app. `__dev/` is not public evidence.
 
-Visual language is [`DESIGN.md`](DESIGN.md). Technical adopter documentation lives on https://basilic-docs.vercel.app. Public README changes follow lock-installed `.agents/skills/technical-writing/` (research, edit, review); glob `.cursor/rules/base/docs.mdc` and `readme.mdc` override eve-repo paths. Read `PRODUCT.md`, `DESIGN.md`, `ARCHITECTURE.md`, and `README.md` before changing product behavior. Durable agents: command and chat in `apps/agents`. Do not create `ROADMAP.md`.
+Visual language is [`DESIGN.md`](DESIGN.md). Technical adopter documentation lives on https://basilic-docs.vercel.app. Public README and root product markdown follow lock-installed `.agents/skills/technical-writing/` from [blockmatic/basilic-skills](https://github.com/blockmatic/basilic-skills); glob `.cursor/rules/base/docs.mdc` and `readme.mdc` override the skill when they conflict. Read `PRODUCT.md`, `DESIGN.md`, `ARCHITECTURE.md`, and `README.md` before changing product behavior. Durable agents: command and chat in `apps/agents`. Do not create `ROADMAP.md`.
 
 ## Working contract
 

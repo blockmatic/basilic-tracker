@@ -1,30 +1,26 @@
 ---
-description: Documentation standards and best practices
-globs: "apps/docu/**/*.mdx"
+description: Product and architecture markdown standards
+globs: "{PRODUCT,ARCHITECTURE,DESIGN}.md"
 alwaysApply: false
 ---
 
 ## Writing Principles
 - Simple, succinct, technical, factual; lead with the answer
 - Active voice, present tense, concrete nouns; `eve` lowercase
-- Consistent capability names with architecture overview
+- Consistent capability names with `ARCHITECTURE.md`
 - Follow `.agents/skills/technical-writing/` (verify against this repo)
 - 300-500 words/section, remove redundancy; no promotional adjectives
 
 ## Content Structure
-- Title/description → short intro → H2/H3 → examples → related links
+- Clear title → short intro → H2/H3 → examples → links to hosted Basilic docs where tasks belong there
 - One concept per section; happy path before alternatives
-- Personas: intro = evaluate; architecture = mental model; development = task; reference-dense pages = scan
-
-## Navigation
-- Max 5-7 top categories, max 2 levels deep; inbound body links, no orphans
 
 ## Organization
-- DRY: one canonical home; README/homepage summarize and link
-- Progressive disclosure; do not invent pages to fill Diátaxis slots
+- DRY: one canonical home per topic across `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md`, and READMEs
+- Progressive disclosure; do not invent files to fill template slots
 - Semantic feature parity with root README (same capabilities, different copy)
 
 ## Layers
-- This MDX is canonical **technical** docs. Visual language is root `DESIGN.md`. Rules do not `@`-attach MDX
-- READMEs are how to run the app/package; they link here, no duplication
-- Update this page when behavior, architecture, commands, or conventions change
+- Root product markdown owns the Coin Tracker story and boundaries. Visual language is `DESIGN.md`. Hosted technical guides live at https://basilic-docs.vercel.app when `AGENTS.md` says upstream wins
+- READMEs are how to run apps and packages; they link out, no duplication of architecture treatises
+- Update these files when behavior, architecture, commands, or conventions change
