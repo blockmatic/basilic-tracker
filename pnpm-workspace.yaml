@@ -78,3 +78,8 @@ overrides:
   picomatch@>=4.0.0 <4.0.4: 4.0.4
   vite@<=7.3.1: ">=7.3.2"
   uuid@<11.1.1: 11.1.1
+
+audit:
+  ignore:
+    # micromatch braces 3.0.3 is npm latest; no patched release
+    - GHSA-vfj7-8cjw-p6xm
