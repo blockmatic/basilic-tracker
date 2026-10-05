@@ -53,7 +53,8 @@ test("formatLocalUrlBanner lists every service", () => {
   const banner = formatLocalUrlBanner();
   assert.match(banner, /https:\/\/tracker\.localhost/);
   assert.match(banner, /https:\/\/api\.tracker\.localhost/);
-  assert.match(banner, /\/eve\/command/);
+  assert.match(banner, /\/eve\/operator/);
+  assert.match(banner, /\/eve\/ask/);
   assert.doesNotMatch(banner, /chat\.tracker/);
   assert.doesNotMatch(banner, /docu\.tracker/);
   assert.match(banner, /dev:app/);
