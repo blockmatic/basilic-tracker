@@ -278,7 +278,7 @@ pnpm setup:portless
 node scripts/setup-portless.mjs
 ```
 
-**Note**: Existing `.env` dest files are not rewritten. Update app URLs to `https://*.tracker.localhost` if they still use `localhost:<port>`. Eve catalog URLs are `https://agents.tracker.localhost/eve/command` and `/eve/chat`.
+**Note**: Existing `.env` dest files are not rewritten. Update app URLs to `https://*.tracker.localhost` if they still use `localhost:<port>`. Eve catalog URLs are `https://agents.tracker.localhost/eve/operator` and `/eve/ask`.
 
 ## Database Development Scripts
 
