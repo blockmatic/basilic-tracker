@@ -202,7 +202,7 @@ export const operationMeta = {
   },
   "getAgentById": {
     "bodyParams": [],
-    "description": "Get one product eve agent by id (command or chat). JWT required.",
+    "description": "Get one product eve agent by id (operator or ask). JWT required.",
     "pathParams": [
       {
         "name": "agentId"
@@ -212,7 +212,7 @@ export const operationMeta = {
   },
   "listAgents": {
     "bodyParams": [],
-    "description": "List product eve agents (command, chat). Public host discovery. Endpoints are absolute eve origins.",
+    "description": "List product eve agents (operator, ask). Public host discovery. Endpoints are absolute eve origins.",
     "pathParams": [],
     "summary": "List agents"
   },

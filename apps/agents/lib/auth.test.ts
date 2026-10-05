@@ -49,7 +49,7 @@ describe("basilicAccessJwt", () => {
     });
     const auth = basilicAccessJwt();
     const session = await auth(
-      new Request("https://agents.tracker.localhost/eve/command/v1/session", {
+      new Request("https://agents.tracker.localhost/eve/operator/v1/session", {
         headers: { authorization: `Bearer ${token}` },
       })
     );
@@ -78,9 +78,12 @@ describe("basilicAccessJwt", () => {
     const auth = basilicAccessJwt();
     expect(
       await auth(
-        new Request("https://agents.tracker.localhost/eve/command/v1/session", {
-          headers: { authorization: `Bearer ${token}` },
-        })
+        new Request(
+          "https://agents.tracker.localhost/eve/operator/v1/session",
+          {
+            headers: { authorization: `Bearer ${token}` },
+          }
+        )
       )
     ).toBeNull();
   });

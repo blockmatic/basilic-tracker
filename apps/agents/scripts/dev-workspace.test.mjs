@@ -10,12 +10,12 @@ import {
 } from "./dev-workspace.mjs";
 
 test("mapPublicEvePath rewrites Vercel-shaped mounts to /eve/v1", () => {
-  assert.deepEqual(mapPublicEvePath({ url: "/eve/command/v1/health" }), {
-    id: "command",
+  assert.deepEqual(mapPublicEvePath({ url: "/eve/operator/v1/health" }), {
+    id: "operator",
     path: "/eve/v1/health",
   });
-  assert.deepEqual(mapPublicEvePath({ url: "/eve/chat/v1/session?x=1" }), {
-    id: "chat",
+  assert.deepEqual(mapPublicEvePath({ url: "/eve/ask/v1/session?x=1" }), {
+    id: "ask",
     path: "/eve/v1/session?x=1",
   });
   assert.equal(mapPublicEvePath({ url: "/eve/v1/health" }), null);
@@ -23,8 +23,8 @@ test("mapPublicEvePath rewrites Vercel-shaped mounts to /eve/v1", () => {
 
 test("eveAgentUrl appends the public mount", () => {
   assert.equal(
-    eveAgentUrl({ id: "command", origin: "https://agents.tracker.localhost" }),
-    "https://agents.tracker.localhost/eve/command"
+    eveAgentUrl({ id: "operator", origin: "https://agents.tracker.localhost" }),
+    "https://agents.tracker.localhost/eve/operator"
   );
 });
 
@@ -48,9 +48,9 @@ test("workspace proxy forwards command and chat mounts", async () => {
   await new Promise((resolve) => proxy.listen(0, "127.0.0.1", resolve));
   const { port } = proxy.address();
   const commandRes = await fetch(
-    `http://127.0.0.1:${port}/eve/command/v1/health`
+    `http://127.0.0.1:${port}/eve/operator/v1/health`
   );
-  const chatRes = await fetch(`http://127.0.0.1:${port}/eve/chat/v1/health`);
+  const chatRes = await fetch(`http://127.0.0.1:${port}/eve/ask/v1/health`);
   const missing = await fetch(`http://127.0.0.1:${port}/eve/v1/health`);
   assert.equal(await commandRes.text(), "command-ok");
   assert.equal(await chatRes.text(), "chat-ok");
@@ -111,7 +111,7 @@ test("proxy strips hop-by-hop headers in both directions", async () => {
           "x-internal": "secret",
         },
         hostname: "127.0.0.1",
-        path: "/eve/command/v1/health",
+        path: "/eve/operator/v1/health",
         port,
       },
       (res) => {

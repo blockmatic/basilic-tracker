@@ -22,6 +22,7 @@ export const env = createEnv({
   server: {
     AI_DEFAULT_MODEL: z.string().min(1).optional(),
     AI_EVALUATE_TIMEOUT_MS: z.coerce.number().int().positive().default(8_000),
+    ANTHROPIC_API_KEY: z.string().min(1).optional(),
     AI_GATEWAY_API_KEY: z.string().min(1).optional(),
     ALCHEMY_API_KEY: z.string().min(1).optional(),
     ALLOWED_ORIGINS: z

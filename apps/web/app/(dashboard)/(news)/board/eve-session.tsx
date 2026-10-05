@@ -25,6 +25,7 @@ import {
   serializeEveSessionCursor,
 } from "@/lib/eve";
 import type { EveSessionCursor } from "@/lib/eve";
+import type { PublicEveAgentId } from "@/lib/eve/public-agent-id";
 import { eveHostQueryKey } from "@/lib/query-keys";
 
 export interface BoardEveEvent {
@@ -88,7 +89,7 @@ function useIsHydrated(): boolean {
   );
 }
 
-function useAgentHost({ id }: { id: "chat" | "command" }) {
+function useAgentHost({ id }: { id: PublicEveAgentId }) {
   return useQuery({
     queryFn: () => listAgentEndpoint({ id }),
     queryKey: eveHostQueryKey(id),
@@ -199,7 +200,7 @@ function EveHost({
   context,
   children,
 }: {
-  id: "chat" | "command";
+  id: PublicEveAgentId;
   storageKey: string;
   context: typeof ChatEveContext;
   children: ReactNode;
@@ -229,11 +230,11 @@ function EveHost({
 export function BoardEveProviders({ children }: { children: ReactNode }) {
   return (
     <EveHost
-      id="command"
+      id="operator"
       storageKey={commandSessionKey}
       context={CommandEveContext}
     >
-      <EveHost id="chat" storageKey={chatSessionKey} context={ChatEveContext}>
+      <EveHost id="ask" storageKey={chatSessionKey} context={ChatEveContext}>
         {children}
       </EveHost>
     </EveHost>

@@ -160,6 +160,7 @@ export const env = createEnv({
       .positive()
       .optional()
       .default(10),
+    ANTHROPIC_API_KEY: z.string().min(1).optional(),
     AI_GATEWAY_API_KEY: z.string().min(1).optional(),
     VERCEL: z
       .string()
@@ -230,11 +231,11 @@ export const env = createEnv({
     EVE_COMMAND_URL: z
       .string()
       .url()
-      .default("https://agents.tracker.localhost/eve/command"),
+      .default("https://agents.tracker.localhost/eve/operator"),
     EVE_CHAT_URL: z
       .string()
       .url()
-      .default("https://agents.tracker.localhost/eve/chat"),
+      .default("https://agents.tracker.localhost/eve/ask"),
     ALLOW_TEST: z
       .string()
       .optional()

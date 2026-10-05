@@ -20,7 +20,7 @@ Local HTTP apps use Portless named HTTPS hosts. Do not discover bind ports.
 - API: `https://api.tracker.localhost`
 - Docs: https://basilic-docs.vercel.app (this app has no Doku host)
 - Email preview: `https://email.tracker.localhost`
-- Eve: `https://agents.tracker.localhost` (`/eve/command`, `/eve/chat`)
+- Eve: `https://agents.tracker.localhost` (`/eve/operator`, `/eve/ask`)
 
 Linked git worktrees prefix the branch (`https://fix-ui.api.tracker.localhost`). Escape hatch: `pnpm --filter <pkg> dev:app` or `PORTLESS=0`. Postgres stays on `127.0.0.1:54322`. Playwright/CI spawn `localhost:3000` / `:3001` (no Portless; eve is not in the Playwright DAG).
 

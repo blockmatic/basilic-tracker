@@ -12,7 +12,7 @@ describe("GET /agents", () => {
       transport: string;
       endpoint: string;
     }[];
-    expect(body.map((row) => row.id).sort()).toEqual(["chat", "command"]);
+    expect(body.map((row) => row.id).sort()).toEqual(["ask", "operator"]);
     expect(body.every((row) => row.transport === "eve")).toBe(true);
     expect(body.every((row) => /^https?:\/\//.test(row.endpoint))).toBe(true);
     expect(body.some((row) => row.id === "hello")).toBe(false);
@@ -31,7 +31,7 @@ describe("GET /agents", () => {
       transport: string;
       endpoint: string;
     }[];
-    expect(body.map((row) => row.id).sort()).toEqual(["chat", "command"]);
+    expect(body.map((row) => row.id).sort()).toEqual(["ask", "operator"]);
     expect(body.every((row) => row.transport === "eve")).toBe(true);
     expect(body.every((row) => /^https?:\/\//.test(row.endpoint))).toBe(true);
     expect(body.some((row) => row.id === "hello")).toBe(false);

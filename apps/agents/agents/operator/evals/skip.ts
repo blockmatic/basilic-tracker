@@ -1,17 +1,16 @@
+import { hasLiveAnthropicKey, hasLiveGatewayKey } from "#lib/live-keys.js";
+
 export function skipIfNoCommandModel({
   skip,
 }: {
   skip: (reason: string) => void;
 }) {
-  /* eslint-disable no-restricted-properties -- eval skipIf must not load createEnv */
-  if (
-    process.env.RUN_JEV_TESTS === "1" &&
-    (process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN)
-  ) {
+  if (hasLiveAnthropicKey() || hasLiveGatewayKey()) {
     return false;
   }
-  /* eslint-enable no-restricted-properties */
-  skip("Jev live tests disabled; set RUN_JEV_TESTS=1");
+  skip(
+    "Operator evals need ANTHROPIC_API_KEY or AI_GATEWAY_API_KEY (Jev) in apps/agents/.env"
+  );
   return true;
 }
 

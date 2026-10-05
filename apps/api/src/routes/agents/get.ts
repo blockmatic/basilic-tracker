@@ -17,7 +17,7 @@ const agentsGetRoute: FastifyPluginAsync = async (fastify) => {
     {
       schema: {
         description:
-          "Get one product eve agent by id (command or chat). JWT required.",
+          "Get one product eve agent by id (operator or ask). JWT required.",
         operationId: "getAgentById",
         params: AgentIdParamsSchema,
         response: {
@@ -37,8 +37,8 @@ const agentsGetRoute: FastifyPluginAsync = async (fastify) => {
       }
       const row = agentById({
         agentId: request.params.agentId,
-        chatUrl: env.EVE_CHAT_URL,
-        commandUrl: env.EVE_COMMAND_URL,
+        askUrl: env.EVE_CHAT_URL,
+        operatorUrl: env.EVE_COMMAND_URL,
       });
       if (!row) {
         return sendCatalogError({ reply, status: 404, code: "NOT_FOUND" });

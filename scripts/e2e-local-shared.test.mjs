@@ -8,8 +8,8 @@ test("spawned e2e Fastify advertises loopback eve hosts", () => {
   assert.equal(defaultE2eEnv.EVE_CHAT_URL, "http://127.0.0.1:3005");
   const env = buildE2eSpawnEnv({
     loaded: {
-      EVE_CHAT_URL: "https://agents.tracker.localhost/eve/chat",
-      EVE_COMMAND_URL: "https://agents.tracker.localhost/eve/command",
+      EVE_CHAT_URL: "https://agents.tracker.localhost/eve/ask",
+      EVE_COMMAND_URL: "https://agents.tracker.localhost/eve/operator",
     },
   });
   assert.equal(env.EVE_COMMAND_URL, "http://127.0.0.1:3004");

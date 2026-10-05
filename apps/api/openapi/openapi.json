@@ -3235,7 +3235,7 @@
         "tags": [
           "agents"
         ],
-        "description": "Get one product eve agent by id (command or chat). JWT required.",
+        "description": "Get one product eve agent by id (operator or ask). JWT required.",
         "parameters": [
           {
             "schema": {
@@ -3290,13 +3290,13 @@
                         {
                           "type": "string",
                           "enum": [
-                            "command"
+                            "operator"
                           ]
                         },
                         {
                           "type": "string",
                           "enum": [
-                            "chat"
+                            "ask"
                           ]
                         }
                       ]
@@ -3434,7 +3434,7 @@
         "tags": [
           "agents"
         ],
-        "description": "List product eve agents (command, chat). Public host discovery. Endpoints are absolute eve origins.",
+        "description": "List product eve agents (operator, ask). Public host discovery. Endpoints are absolute eve origins.",
         "security": [],
         "responses": {
           "200": {
@@ -3476,13 +3476,13 @@
                           {
                             "type": "string",
                             "enum": [
-                              "command"
+                              "operator"
                             ]
                           },
                           {
                             "type": "string",
                             "enum": [
-                              "chat"
+                              "ask"
                             ]
                           }
                         ]

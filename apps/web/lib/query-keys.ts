@@ -19,5 +19,7 @@ export const coinsCandlesQueryKey = ({
 export const coinsGlobalQueryKey = ["coins", "global"] as const;
 export const coinsTrendingQueryKey = ["coins", "trending"] as const;
 export const accountWalletQueryKey = ["account", "wallet"] as const;
-export const eveHostQueryKey = (id: "chat" | "command") =>
+import type { PublicEveAgentId } from "@/lib/eve/public-agent-id";
+
+export const eveHostQueryKey = (id: PublicEveAgentId) =>
   ["eve", "host", id] as const;

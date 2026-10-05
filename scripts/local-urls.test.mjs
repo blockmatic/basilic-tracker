@@ -53,7 +53,8 @@ test("formatLocalUrlBanner lists every service", () => {
   const banner = formatLocalUrlBanner();
   assert.match(banner, /https:\/\/tracker\.localhost/);
   assert.match(banner, /https:\/\/api\.tracker\.localhost/);
-  assert.match(banner, /\/eve\/command/);
+  assert.match(banner, /\/eve\/operator/);
+  assert.match(banner, /\/eve\/ask/);
   assert.doesNotMatch(banner, /chat\.tracker/);
   assert.doesNotMatch(banner, /docu\.tracker/);
   assert.match(banner, /dev:app/);
@@ -73,10 +74,10 @@ test("localDevChildEnv exports sibling URLs for Turbo children", () => {
   assert.equal(env.WEB_APP_URL, "https://fix-ui.tracker.localhost");
   assert.equal(
     env.EVE_COMMAND_URL,
-    eveAgentUrl({ id: "command", origin: canonicalLocalAppUrls.agents })
+    eveAgentUrl({ id: "operator", origin: canonicalLocalAppUrls.agents })
   );
   assert.equal(
     env.EVE_CHAT_URL,
-    eveAgentUrl({ id: "chat", origin: canonicalLocalAppUrls.agents })
+    eveAgentUrl({ id: "ask", origin: canonicalLocalAppUrls.agents })
   );
 });

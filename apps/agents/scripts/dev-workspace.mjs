@@ -42,7 +42,7 @@ export function stripHopByHopHeaders(headers) {
   return out;
 }
 
-export const eveAgentIds = ["command", "chat"];
+export const eveAgentIds = ["operator", "ask"];
 
 export function evePublicMount({ id }) {
   return `/eve/${id}`;
@@ -147,8 +147,8 @@ function main({ env = process.env } = {}) {
     env.EVE_COMMAND_INTERNAL_PORT ?? defaultCommandInternalPort;
   const chatPort = env.EVE_CHAT_INTERNAL_PORT ?? defaultChatInternalPort;
   const listenPort = env.PORT ?? "3100";
-  const command = spawnEve({ agentId: "command", env, port: commandPort });
-  const chat = spawnEve({ agentId: "chat", env, port: chatPort });
+  const command = spawnEve({ agentId: "operator", env, port: commandPort });
+  const chat = spawnEve({ agentId: "ask", env, port: chatPort });
   const children = [command, chat];
   const server = createWorkspaceProxy({
     chatOrigin: `http://127.0.0.1:${chatPort}`,
