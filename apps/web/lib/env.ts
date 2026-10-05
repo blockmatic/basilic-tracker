@@ -28,6 +28,7 @@ export const env = createEnv({
   emptyStringAsUndefined: true,
   runtimeEnv: {
     AI_GATEWAY_API_KEY: process.env.AI_GATEWAY_API_KEY,
+    VERCEL_OIDC_TOKEN: process.env.VERCEL_OIDC_TOKEN,
     ALLOW_TEST: process.env.ALLOW_TEST,
     AUTH_COOKIE_NAME: process.env.AUTH_COOKIE_NAME,
     JEV_MODEL: process.env.JEV_MODEL,
@@ -58,6 +59,7 @@ export const env = createEnv({
   },
   server: {
     AI_GATEWAY_API_KEY: z.string().min(1).optional(),
+    VERCEL_OIDC_TOKEN: z.string().min(1).optional(),
     ALLOW_TEST: z.enum(["true", "false"]).optional(),
     AUTH_COOKIE_NAME: z.string().default("api.session"),
     JEV_MODEL: z.string().min(1).default("typesafe-ai/jev"),

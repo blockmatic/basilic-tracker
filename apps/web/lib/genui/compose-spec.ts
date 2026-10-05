@@ -24,7 +24,7 @@ export async function composeBoardSpec({
   try {
     return await runComposeBoardSpec({
       account: accountFromUser({ user: await getUserInfo() }),
-      apiKey: env.AI_GATEWAY_API_KEY,
+      apiKey: env.AI_GATEWAY_API_KEY ?? env.VERCEL_OIDC_TOKEN,
       caption: parsed.title,
       model: env.JEV_MODEL,
       prompt,

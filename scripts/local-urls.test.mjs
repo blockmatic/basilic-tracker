@@ -73,10 +73,10 @@ test("localDevChildEnv exports sibling URLs for Turbo children", () => {
   assert.equal(env.WEB_APP_URL, "https://fix-ui.tracker.localhost");
   assert.equal(
     env.EVE_COMMAND_URL,
-    eveAgentUrl({ id: "command", origin: canonicalLocalAppUrls.agents })
+    eveAgentUrl({ id: "operator", origin: canonicalLocalAppUrls.agents })
   );
   assert.equal(
     env.EVE_CHAT_URL,
-    eveAgentUrl({ id: "chat", origin: canonicalLocalAppUrls.agents })
+    eveAgentUrl({ id: "ask", origin: canonicalLocalAppUrls.agents })
   );
 });

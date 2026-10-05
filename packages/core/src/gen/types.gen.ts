@@ -1147,7 +1147,7 @@ export type GetAgentByIdResponses = {
     capabilities: Array<string>;
     endpoint: string;
     features: Array<string>;
-    id: 'command' | 'chat';
+    id: 'operator' | 'ask';
     name: string;
     presentation: string;
     transport: 'eve';
@@ -1188,7 +1188,7 @@ export type ListAgentsResponses = {
     capabilities: Array<string>;
     endpoint: string;
     features: Array<string>;
-    id: 'command' | 'chat';
+    id: 'operator' | 'ask';
     name: string;
     presentation: string;
     transport: 'eve';

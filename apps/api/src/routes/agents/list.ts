@@ -12,7 +12,7 @@ const agentsListRoute: FastifyPluginAsync = async (fastify) => {
     {
       schema: {
         description:
-          "List product eve agents (command, chat). Public host discovery. Endpoints are absolute eve origins.",
+          "List product eve agents (operator, ask). Public host discovery. Endpoints are absolute eve origins.",
         operationId: "listAgents",
         response: {
           200: Type.Array(AgentRecordSchema),
@@ -26,8 +26,8 @@ const agentsListRoute: FastifyPluginAsync = async (fastify) => {
     async (_request, reply) =>
       reply.code(200).send(
         agentCatalog({
-          commandUrl: env.EVE_COMMAND_URL,
-          chatUrl: env.EVE_CHAT_URL,
+          askUrl: env.EVE_CHAT_URL,
+          operatorUrl: env.EVE_COMMAND_URL,
         })
       )
   );

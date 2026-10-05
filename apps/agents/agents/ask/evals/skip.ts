@@ -1,17 +1,14 @@
+import { hasLiveAnthropicKey } from "#lib/live-keys.js";
+
 export function skipIfNoLanguageModel({
   skip,
 }: {
   skip: (reason: string) => void;
 }) {
-  /* eslint-disable no-restricted-properties -- eval skipIf must not load createEnv */
-  if (
-    process.env.RUN_JEV_TESTS === "1" &&
-    (process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN)
-  ) {
+  if (hasLiveAnthropicKey()) {
     return false;
   }
-  /* eslint-enable no-restricted-properties */
-  skip("Jev live tests disabled; set RUN_JEV_TESTS=1");
+  skip("Ask evals need ANTHROPIC_API_KEY in apps/agents/.env");
   return true;
 }
 

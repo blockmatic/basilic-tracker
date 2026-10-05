@@ -28,7 +28,7 @@ export const localServices = [
     url: "https://email.tracker.localhost",
   },
   {
-    hint: "/eve/command and /eve/chat",
+    hint: "/eve/operator and /eve/ask",
     id: "agents",
     label: "Eve",
     name: "agents.tracker",
@@ -113,8 +113,8 @@ export function localDevChildEnv({
 } = {}) {
   return {
     ...env,
-    EVE_CHAT_URL: eveAgentUrl({ origin: urls.agents, id: "chat" }),
-    EVE_COMMAND_URL: eveAgentUrl({ origin: urls.agents, id: "command" }),
+    EVE_CHAT_URL: eveAgentUrl({ origin: urls.agents, id: "ask" }),
+    EVE_COMMAND_URL: eveAgentUrl({ origin: urls.agents, id: "operator" }),
     EXPO_PUBLIC_API_URL: urls.api,
     NEXT_PUBLIC_API_URL: urls.api,
     NEXT_PUBLIC_APP_URL: urls.web,

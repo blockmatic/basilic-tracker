@@ -2,10 +2,12 @@
 
 import { coreClient } from "@/app/providers";
 
+import type { PublicEveAgentId } from "./public-agent-id";
+
 export async function listAgentEndpoint({
   id,
 }: {
-  id: "chat" | "command";
+  id: PublicEveAgentId;
 }): Promise<string> {
   const agents = await coreClient.listAgents();
   const agent = agents.find((row) => row.id === id);

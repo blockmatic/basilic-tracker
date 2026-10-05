@@ -1,24 +1,24 @@
 import { Type } from "@sinclair/typebox";
 
-export const agentIds = ["command", "chat"] as const;
+export const agentIds = ["operator", "ask"] as const;
 export type AgentId = (typeof agentIds)[number];
 
 export const AgentRecordSchema = Type.Object({
   capabilities: Type.Array(Type.String()),
   endpoint: Type.String({ minLength: 1 }),
   features: Type.Array(Type.String()),
-  id: Type.Union([Type.Literal("command"), Type.Literal("chat")]),
+  id: Type.Union([Type.Literal("operator"), Type.Literal("ask")]),
   name: Type.String(),
   presentation: Type.String(),
   transport: Type.Literal("eve"),
 });
 
 export function agentCatalog({
-  commandUrl,
-  chatUrl,
+  operatorUrl,
+  askUrl,
 }: {
-  commandUrl: string;
-  chatUrl: string;
+  operatorUrl: string;
+  askUrl: string;
 }): {
   id: AgentId;
   name: string;
@@ -31,19 +31,19 @@ export function agentCatalog({
   return [
     {
       capabilities: ["markets", "watches"],
-      endpoint: commandUrl.replace(/\/$/, ""),
+      endpoint: operatorUrl.replace(/\/$/, ""),
       features: ["tools"],
-      id: "command",
-      name: "Commands",
+      id: "operator",
+      name: "Operator",
       presentation: "commands",
       transport: "eve",
     },
     {
       capabilities: ["watches-read"],
-      endpoint: chatUrl.replace(/\/$/, ""),
+      endpoint: askUrl.replace(/\/$/, ""),
       features: ["transcript"],
-      id: "chat",
-      name: "Chat",
+      id: "ask",
+      name: "Ask",
       presentation: "chat",
       transport: "eve",
     },
@@ -52,15 +52,15 @@ export function agentCatalog({
 
 export function agentById({
   agentId,
-  commandUrl,
-  chatUrl,
+  operatorUrl,
+  askUrl,
 }: {
   agentId: string;
-  commandUrl: string;
-  chatUrl: string;
+  operatorUrl: string;
+  askUrl: string;
 }) {
   return (
-    agentCatalog({ chatUrl, commandUrl }).find((row) => row.id === agentId) ??
+    agentCatalog({ askUrl, operatorUrl }).find((row) => row.id === agentId) ??
     null
   );
 }

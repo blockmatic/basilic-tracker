@@ -12,7 +12,7 @@ describe("command tools", () => {
 
 describe("eve authored modules", () => {
   it("keeps PGLite and Postgres packages external", () => {
-    for (const agent of ["command", "chat"] as const) {
+    for (const agent of ["operator", "ask"] as const) {
       const source = readFileSync(
         new URL(`../agents/${agent}/agent/agent.ts`, import.meta.url),
         "utf8"
@@ -27,7 +27,7 @@ describe("eve authored modules", () => {
 
 describe("chat tools", () => {
   it("sources do not call markets, Alchemy, or drizzle schema", () => {
-    const dir = new URL("../agents/chat/agent/tools/", import.meta.url);
+    const dir = new URL("../agents/ask/agent/tools/", import.meta.url);
     for (const name of readdirSync(dir)) {
       if (!name.endsWith(".ts")) continue;
       const source = readFileSync(new URL(name, dir), "utf8");

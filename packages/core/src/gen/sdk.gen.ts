@@ -273,7 +273,7 @@ export const accountWalletGet = <ThrowOnError extends boolean = false>(options?:
 /**
  * Get agent
  *
- * Get one product eve agent by id (command or chat). JWT required.
+ * Get one product eve agent by id (operator or ask). JWT required.
  */
 export const getAgentById = <ThrowOnError extends boolean = false>(options: Options<GetAgentByIdData, ThrowOnError>): RequestResult<GetAgentByIdResponses, GetAgentByIdErrors, ThrowOnError> => (options.client ?? client).get<GetAgentByIdResponses, GetAgentByIdErrors, ThrowOnError>({
   security: [{ scheme: 'bearer', type: 'http' }],
@@ -284,7 +284,7 @@ export const getAgentById = <ThrowOnError extends boolean = false>(options: Opti
 /**
  * List agents
  *
- * List product eve agents (command, chat). Public host discovery. Endpoints are absolute eve origins.
+ * List product eve agents (operator, ask). Public host discovery. Endpoints are absolute eve origins.
  */
 export const listAgents = <ThrowOnError extends boolean = false>(options?: Options<ListAgentsData, ThrowOnError>): RequestResult<ListAgentsResponses, ListAgentsErrors, ThrowOnError> => (options?.client ?? client).get<ListAgentsResponses, ListAgentsErrors, ThrowOnError>({ url: '/agents/', ...options });
 
