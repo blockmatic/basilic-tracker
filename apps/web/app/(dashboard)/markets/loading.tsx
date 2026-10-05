@@ -29,7 +29,7 @@ function MarketsCardSkeleton() {
 function MarketsTableSkeleton() {
   return (
     <div className="hidden w-full min-w-0 overflow-hidden xl:block">
-      <Table className="w-full table-fixed" fluid>
+      <Table className="w-full table-fixed">
         <TableHeader>
           <TableRow>
             <TableHead className="hidden w-[4%] lg:table-cell">#</TableHead>
