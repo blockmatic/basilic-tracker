@@ -108,7 +108,7 @@ import {
 import { cn } from "@repo/ui/lib/utils";
 import { useState } from "react";
 
-import { type CommandSurfaceComponentProps } from "@/lib/genui/command-catalog/definitions";
+import type { CommandSurfaceComponentProps } from "@/lib/genui/command-catalog/definitions";
 
 // =============================================================================
 // Helpers
