@@ -13,7 +13,7 @@ describe("GET /agents/:agentId", () => {
     expect(response.json().code).toBe("UNAUTHORIZED");
   });
 
-  it("returns command metadata", async () => {
+  it("returns operator metadata", async () => {
     const jwt = await getOrCreateSession(fastify, "agents-get@test.ai");
     const response = await fastify.inject({
       method: "GET",
