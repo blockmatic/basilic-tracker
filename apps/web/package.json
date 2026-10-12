@@ -25,6 +25,7 @@
   "dependencies": {
     "@json-render/core": "0.21.0",
     "@json-render/react": "0.21.0",
+    "@repo/capabilities": "workspace:*",
     "@repo/core": "workspace:*",
     "@repo/error": "workspace:*",
     "@repo/react": "workspace:*",

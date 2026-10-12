@@ -3885,3 +3885,55 @@ export type ListCoinWatchesResponses = {
 };
 
 export type ListCoinWatchesResponse = ListCoinWatchesResponses[keyof ListCoinWatchesResponses];
+
+export type ListMutationEventsData = {
+  body?: never;
+  path?: never;
+  query?: {
+    after?: number;
+    limit?: number;
+  };
+  url: '/events/';
+};
+
+export type ListMutationEventsErrors = {
+  /**
+   * Default Response
+   */
+  401: {
+    code: string;
+    message: string;
+    detail?: string;
+    status?: number;
+    title?: string;
+    type?: string;
+  };
+};
+
+export type ListMutationEventsError = ListMutationEventsErrors[keyof ListMutationEventsErrors];
+
+export type ListMutationEventsResponses = {
+  /**
+   * Default Response
+   */
+  200: {
+    events: Array<{
+      capabilityId: string;
+      createdAt: string;
+      cursor: number;
+      entities: Array<{
+        id: string;
+        type: string;
+      }>;
+      operationId: string;
+      payload?: {
+        [key: string]: unknown;
+      };
+      queryKeys: Array<Array<unknown>>;
+      revision: number;
+      userId: string;
+    }>;
+  };
+};
+
+export type ListMutationEventsResponse = ListMutationEventsResponses[keyof ListMutationEventsResponses];
