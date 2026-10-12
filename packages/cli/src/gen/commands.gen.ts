@@ -328,6 +328,12 @@ export const operationMeta = {
     "description": "List the access JWT user watchlist keyed by asset id. Empty list is []. Cap 20 is enforced on PUT.",
     "pathParams": [],
     "summary": "List coin watches"
+  },
+  "listMutationEvents": {
+    "bodyParams": [],
+    "description": "User-scoped mutation cursor for cross-tab and external-agent sync. Poll with after cursor or request SSE via Accept: text/event-stream.",
+    "pathParams": [],
+    "summary": "List mutation events"
   }
 } as const
 
@@ -579,6 +585,12 @@ export const commandSpecs = [
       "coins",
       "watches",
       "watches"
+    ]
+  },
+  {
+    "operationId": "listMutationEvents",
+    "path": [
+      "list-mutation-events"
     ]
   }
 ] as const

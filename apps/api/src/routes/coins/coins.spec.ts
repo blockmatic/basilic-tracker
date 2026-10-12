@@ -24,6 +24,7 @@ export { fastify };
 import "./list.test";
 import "./query.test";
 import "./watches/watches.test";
+import "../../lib/capabilities/coverage.test.js";
 import "./candles/get.test";
 import "./global/get.test";
 import "./trending/get.test";

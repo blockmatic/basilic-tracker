@@ -11405,6 +11405,161 @@
           }
         }
       }
+    },
+    "/events/": {
+      "get": {
+        "operationId": "listMutationEvents",
+        "summary": "List mutation events",
+        "tags": [
+          "events"
+        ],
+        "description": "User-scoped mutation cursor for cross-tab and external-agent sync. Poll with after cursor or request SSE via Accept: text/event-stream.",
+        "parameters": [
+          {
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "after",
+            "required": false
+          },
+          {
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "limit",
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "events"
+                  ],
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "capabilityId",
+                          "createdAt",
+                          "cursor",
+                          "entities",
+                          "operationId",
+                          "queryKeys",
+                          "revision",
+                          "userId"
+                        ],
+                        "properties": {
+                          "capabilityId": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "cursor": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "entities": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "type"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "operationId": {
+                            "type": "string"
+                          },
+                          "payload": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          },
+                          "queryKeys": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {}
+                            }
+                          },
+                          "revision": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "userId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "servers": [

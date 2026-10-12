@@ -76,6 +76,8 @@ import type {
   ListCoinWatchesResponse,
   ListCoinsData,
   ListCoinsResponse,
+  ListMutationEventsData,
+  ListMutationEventsResponse,
   LogoutData,
   LogoutResponse,
   MagiclinkRequestData,
@@ -254,5 +256,6 @@ export type CoreApiClient = {
       };
       watches: (opts?: Options<ListCoinWatchesData>) => Promise<ListCoinWatchesResponse>
     }
-  }
+  };
+  listMutationEvents: (opts?: Options<ListMutationEventsData>) => Promise<ListMutationEventsResponse>
 }

@@ -125,4 +125,5 @@ coins: {
     watches: gen.listCoinWatches,
   },
 },
+listMutationEvents: gen.listMutationEvents,
 }

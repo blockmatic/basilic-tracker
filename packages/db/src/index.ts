@@ -20,3 +20,9 @@ export { createPgPool, pgPoolConfig } from "./pg-pool.js";
 export { getValidSession } from "./sessions.js";
 export { countLinkedEip155, getLinkedEip155 } from "./wallets.js";
 export { listWatches, unwatchAsset, watchAsset } from "./watches.js";
+export {
+  appendMutationEvent,
+  findMutationByOperationId,
+  listMutationEventsAfter,
+} from "./mutation-events.js";
+export type { MutationEventRow } from "./schema/tables/mutation-events.js";

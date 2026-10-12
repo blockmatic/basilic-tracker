@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.71",
+    "@repo/capabilities": "workspace:*",
     "@repo/db": "workspace:*",
     "@repo/markets": "workspace:*",
     "@repo/onchain": "workspace:*",

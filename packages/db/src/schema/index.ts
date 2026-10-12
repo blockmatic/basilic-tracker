@@ -6,6 +6,7 @@ export * from "./tables/asset-providers.js";
 export * from "./tables/assets.js";
 export * from "./tables/auth-attempts.js";
 export * from "./tables/coin-watches.js";
+export * from "./tables/mutation-events.js";
 export * from "./tables/passkey-auth-challenges.js";
 export * from "./tables/passkey-callback.js";
 export * from "./tables/passkey-challenges.js";
